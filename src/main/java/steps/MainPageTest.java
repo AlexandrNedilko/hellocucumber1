@@ -23,11 +23,10 @@ public class MainPageTest extends BaseTest {
         driver.get(config.getProperty("baseurl"));
     }
 
-    @And("^close the browser$")/*@AfterTest*/
+    @And("^close the browser$")
     public void cleanup() {
         driver.manage().deleteAllCookies();
-        //TestHelper.sleep5Seconds();
-        try {
+          try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -36,12 +35,12 @@ public class MainPageTest extends BaseTest {
         driver.close();
     }
 
-    @Given("^open main page$")   /*  @BeforeTest*/
+    @Given("^open main page$")
     public void setupMainPage(){
         mainPage = new MainPage(driver);
     }
 
-    @And("^go to myFirstPattern$")/*  @Test*/
+    @And("^go to myFirstPattern$")
     public void myFirstPattern(String good) {
         mainPage.enterSomeBody_andClick(good);
         Assert.assertEquals("1", "1");
@@ -50,7 +49,7 @@ public class MainPageTest extends BaseTest {
         mainPage.plusClick(); //click Plus
     }
 
-    @And("^go to myTestDataProvider with name: \"([^\"]*)\"$")/*@Test(dataProvider = "goods")*/
+    @And("^go to myTestDataProvider with name: \"([^\"]*)\"$")
     public void myTestDataProvider(String good) {
         mainPage.enterSomeBody(good);
         mainPage.clear();
@@ -60,12 +59,12 @@ public class MainPageTest extends BaseTest {
             e.printStackTrace();
         }
     }
-    @And("^go to _4Test$")/*  @Test*/
+    @And("^go to _4Test$")
     public void _4Test(){
         System.out.println("_4Test");
         Assert.assertEquals(7,7);
     }
-    @And("^go to _5Test$")/* @Test*/
+    @And("^go to _5Test$")
     public void _5Test(){
         System.out.println("_5Test");
         Assert.assertEquals(5,5);
